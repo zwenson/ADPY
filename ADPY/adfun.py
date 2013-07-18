@@ -1,4 +1,23 @@
 # coding: utf-8
+
+""" 
+    Copyright 2013 Oliver Schnabel
+    
+    This file is part of ADPY.
+    ADPY is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    ADPY is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ADPY.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
 from __future__ import division
 
 import numpy as np
@@ -7,10 +26,11 @@ try:
 except:
     print 'no sympy support'
     pass
-#import sys
-#import os
-#sys.path.append('/home/zwen/myModules')
-from ipHelp import IPS, ST, ip_syshook, dirsearch, sys
+
+try:
+    from ipHelp import IPS, ST, ip_syshook, dirsearch, sys
+except:
+    pass
 import types
 
 from adfloat import adfloat
