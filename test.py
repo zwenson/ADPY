@@ -2,11 +2,13 @@
 
 from time import clock
 
-import sys
-sys.path.append('/home/zwen/myModules')
-from ipHelp import IPS, ST, ip_syshook, dirsearch, sys
+from ADPY import *
 
-from adpy2 import *
+try:
+    from ADPY.TOOLS import IPS, ST, ip_syshook, dirsearch, sys
+except:
+    print "Failed import Tools"
+    pass
 
 #import algopy
 #from algopy import UTPM
@@ -31,7 +33,6 @@ def f(x):
 
 def main():
     
-
     foo_ad = adfun(f,x)
     # foo_ad.graph_only()
 
@@ -55,20 +56,20 @@ def main():
     # print 'FORWARD'
 
 
-    import algopy
-    from algopy import UTPM
-    n=len(f(x))
-    def F(args): #Arugmente auspacken und func aufrufen
-        #a little wrapper due the behavior of lambdify
-        out = algopy.zeros(n, dtype=args)
-        G = f(args)
-        for i in range(n):
-            out[i]=G[i]
-        return out
-    x1 = UTPM.init_jacobian(x)
-    y = F(x1)
-    algopy_jacobian = UTPM.extract_jacobian(y)
-    print 'jacobian = \n',algopy_jacobian
+    # import algopy
+    # from algopy import UTPM
+    # n=len(f(x))
+    # def F(args): #Arugmente auspacken und func aufrufen
+    #     #a little wrapper due the behavior of lambdify
+    #     out = algopy.zeros(n, dtype=args)
+    #     G = f(args)
+    #     for i in range(n):
+    #         out[i]=G[i]
+    #     return out
+    # x1 = UTPM.init_jacobian(x)
+    # y = F(x1)
+    # algopy_jacobian = UTPM.extract_jacobian(y)
+    # print 'jacobian = \n',algopy_jacobian
 
 
     print '\n######## ADDYN #########\n'
@@ -101,7 +102,7 @@ def test_sympy():
 
     x_tupel = (x,x0)
     foo_ad = adfun(GLS,x_tupel,SYMPY=True)
-    foo_ad.graph_only()
+    # foo_ad.graph_only()
 
     p = foo_ad([1,2,3])
 
@@ -117,7 +118,7 @@ def reverse():
     foo_ad.init_reverse_jac()
 
     t1 = clock()
-    for i in xrange(1000):
+    for i in xrange(1):
 
         J = foo_ad.jac_reverse(x)
 
@@ -127,7 +128,7 @@ def reverse():
     foo_ad.init_forward_jac()
 
     t1 = clock()
-    for i in xrange(1000):
+    for i in xrange(1):
 
         J = foo_ad.jac_forward(x)
 
@@ -138,6 +139,7 @@ def reverse():
 
 #if __name__ == '__main__':
 #print f(x)
+test_sympy()
 reverse()
 #main()
 #test_sympy()
