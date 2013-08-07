@@ -26,17 +26,17 @@ from numpy.linalg import norm
 import sympy as sp
 
 try:
-    from ..TOOLS.ipHelp import IPS, ST, ip_syshook, dirsearch, sys
+    from ..TOOLS import IPS, ST, ip_syshook, dirsearch, sys
 except:
     print "Failed import Tools"
     pass
 
-from ..ADFUN.adfun import *
+from ..ADFUN import adfun
 
 
 class solver:
 
-    def __init__(self,GLS,x0,x=[],tol=10e-5,maxx=10,algo='leven'):
+    def __init__(self,GLS,x0,x=[],tol=10e-5,maxx=10,algo='leven',SYMPY=False):
         
         #GLS should be a numpy array of sympy expressions
         #x should be a numpy array of all symbolic variables been used in GLS
@@ -46,19 +46,22 @@ class solver:
         #maxx .... or maximum number of iterations is reached
 
         self.x0 = np.array(x0,dtype=float)
-        n=len(GLS)
-        if (not n==len(x0) and algo=='newton'):
-            print 'Newton needs square equation systems'
-            return x0.tolist()
+        # n=len(GLS)
+        # if (not n==len(x0) and algo=='newton'):
+        #     print 'Newton needs square equation systems'
+        #     return x0.tolist()
         
         self.sol=None
         self.x = x
         self.tol = tol
         self.maxx = maxx
         self.algo = algo
-        self.n=n
-
-    	self.foo_ad = adfun(GLS,(x,x0),SYMPY=True)
+        # self.n=n
+        
+        if SYMPY==True:
+    	    self.foo_ad = adfun(GLS,(x,x0),SYMPY=True)
+        else:
+            self.foo_ad = adfun(GLS,x0)
         self.foo_ad.init_forward_jac()
         self.F = self.foo_ad.f
         self.J=self.foo_ad.jac_forward

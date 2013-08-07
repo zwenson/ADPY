@@ -30,6 +30,7 @@ except:
 try:
     from ..TOOLS import IPS, ST, ip_syshook, dirsearch, sys
 except:
+    print 'Failed to load TOOLS'
     pass
 import types
 
@@ -210,7 +211,8 @@ class adfun:
             self.graph[md] = AA
             self.graph_list.append((op,va))
             v1,v2 = map(str,va)
-
+            
+            #IPS()
             self.graphfoo.append(GRAPH_LIBRARY[op](v3,v1,v2))
             self.graphfoo.append("    v.append(%s)" % v3)
 
