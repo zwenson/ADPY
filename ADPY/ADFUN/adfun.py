@@ -23,15 +23,10 @@ from __future__ import division
 import numpy as np
 try:
     import sympy as sp
-except:
+except ImportError:
     print 'no sympy support'
     pass
 
-try:
-    from ..TOOLS import IPS, ST, ip_syshook, dirsearch, sys
-except:
-    print 'Failed to load TOOLS'
-    pass
 import types
 
 from adfloat import adfloat
@@ -141,8 +136,6 @@ class adfun:
 
         self.make_function(self.graphforward,'forward_one_row')
 
-        #IPS()
-
 
     def init_reverse_jac(self):
 
@@ -212,7 +205,6 @@ class adfun:
             self.graph_list.append((op,va))
             v1,v2 = map(str,va)
             
-            #IPS()
             self.graphfoo.append(GRAPH_LIBRARY[op](v3,v1,v2))
             self.graphfoo.append("    v.append(%s)" % v3)
 
@@ -224,7 +216,6 @@ class adfun:
     def make_function(self,graph,func_name):
         
         r = '\n'
-        #IPS()
         code = compile(r.join(graph),'<string>', 'exec')
         NN = {}
         exec code in NN
@@ -293,8 +284,3 @@ class adfun:
 
     def __call__(self,x):
         return self.f(x)
-
-
-if __name__ == '__main__':
-    IPS()
-    pass

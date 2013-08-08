@@ -23,14 +23,6 @@ from __future__ import division
 import numpy as np
 from numpy.linalg import norm
 
-import sympy as sp
-
-try:
-    from ..TOOLS import IPS, ST, ip_syshook, dirsearch, sys
-except:
-    print "Failed import Tools"
-    pass
-
 from ..ADFUN import adfun
 
 
@@ -183,27 +175,3 @@ class solver:
             print i,': ',res
 
         self.sol = x
-
-if __name__ == '__main__':
-
-    from time import clock
-
-    x1,x2,x3  =sp.symbols('x1 x2 x3')
-
-    x=np.array([x1,x2,x3])
-
-    GLS = [ x2+x3-5,
-            -x1**2 -x3 +1, 
-            -x2 + x1 -x3 + 7]
-            #x1**2 +x2**2]
-
-    #x0=list([-1.1,9,-3])
-    x0=np.array([100.0,1.0,1.0])
-    #IPS()
-    t1=clock()
-    GLS = np.array(GLS)
-    solver = solver(GLS,x,x0,algo='leven',tol=1e-10,maxx=100)
-    sol = solver.solve()
-    print clock()-t1
-    print sol
-    IPS()

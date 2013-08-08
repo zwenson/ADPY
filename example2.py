@@ -23,7 +23,12 @@
 from ADPY import adfun
 from ADPY import solver
 import numpy as np
-import sympy as sp
+try:
+    import sympy as sp
+except ImportError:
+    print 'no sympy support'
+    SYMPY_SUPPORT = False
+    pass
 
 ###### example2 #######
 """
@@ -59,6 +64,9 @@ print sol
 
 
 ##### with sympy ######
+
+if SYMPY_SUPPORT == False:
+    exit()
 
 # create symbols and put them in an array
 x1,x2  =sp.symbols('x1 x2')
