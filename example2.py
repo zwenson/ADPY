@@ -25,6 +25,7 @@ from ADPY import solver
 import numpy as np
 try:
     import sympy as sp
+    SYMPY_SUPPORT = True
 except ImportError:
     print 'no sympy support'
     SYMPY_SUPPORT = False
