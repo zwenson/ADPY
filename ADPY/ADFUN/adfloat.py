@@ -19,10 +19,6 @@
 
 from __future__ import division
 import numpy as np
-try:
-    from ..tools.ipHelp import IPS, ST, ip_syshook, dirsearch, sys
-except:
-    pass
 
 
 class adfloat:
