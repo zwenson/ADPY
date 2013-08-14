@@ -19,3 +19,9 @@ Due the small amount of features the handling is quite easy.
 For the easiest use you need a callable function which takes a list of float numbers and return a list::
     def f(x):
         return 
+        
+        
+        
+##How it works
+
+Without going in to detail. It uses an overloaded class to 
