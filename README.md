@@ -1,11 +1,11 @@
 ADPY
 ====
 
-##Discription
+##Description
 
 
 ADPY is a Python library for algorithmic differentiation (http://en.wikipedia.org/wiki/Automatic_differentiation).
-It aims to provide an easy way to extract partial derivatives of vector valued function. In addition it allows to created callable function for obtaining function values using computational graphs.  
+It aims to provide an easy way to extract partial derivatives of vector valued function (Jacobian matrix). In addition it allows to created callable function for obtaining function values using computational graphs.  
 
 Features:
 
@@ -18,16 +18,11 @@ Features:
 
 ##How to use
 
-Due the small amount of features the handling is quite easy. 
-For the easiest use you need a callable function which takes a list of float numbers and return a list::
-    def f(x):
-        return 
-        
-        
+Due the small amount of features the handling is quite easy.         
         
 For the easiest use you need a callable function which takes a list of float numbers and returns a list.
 
-    	def f(x):
+        def f(x):
         	return [x[0]**2,2*x[1]]
 
 You need a valid values for x which cause no singularities while evaluating the function.
@@ -62,8 +57,11 @@ or
 
 ##How it works
 
-Without going in to detail. It uses an overloaded class to create a graph structure of mathematical operations 
+Without going in to detail. It uses an overloaded class "adfloat" to record a list of the mathematical operations required to obtain the result. This list is then translated in to python expressions and made executable. The list is also used to perform automatic differentiation.
 
 
-
-
+##To do
+* more testing
+* add more operations
+* maybe add Hessian matrix? 
+* add Taylor arithmetic? 
