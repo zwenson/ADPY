@@ -57,12 +57,15 @@ or
 
 ##Install
 
-clone git 
+clone git
+
         git clone https://github.com/zwenson/ADPY
 and run setup.py
+
         python setuo.py install
-        
+
 or use easy_install
+
         easy_install ADPY
 
 ##How it works
