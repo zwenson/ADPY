@@ -55,6 +55,8 @@ or
 		J_forward = adpy_test.jac_forward(x1)
 
 
+For more information see the attached examples.
+
 ##Install
 
 clone git
@@ -62,7 +64,7 @@ clone git
         git clone https://github.com/zwenson/ADPY
 and run setup.py
 
-        python setuo.py install
+        python setup.py install
 
 or use easy_install
 
