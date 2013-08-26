@@ -42,7 +42,6 @@ def f(x):
 x = [0.3,5.0,np.pi/4.0,5.5]
 
 foo_ad = adfun(f,x)
-print '\n######## ADDYN #########\n'
 
 foo_ad.init_reverse_jac()
 

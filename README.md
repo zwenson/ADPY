@@ -55,6 +55,16 @@ or
 		J_forward = adpy_test.jac_forward(x1)
 
 
+##Install
+
+clone git 
+        git clone https://github.com/zwenson/ADPY
+and run setup.py
+        python setuo.py install
+        
+or use easy_install
+        easy_install ADPY
+
 ##How it works
 
 Without going in to detail. It uses an overloaded class "adfloat" to record a list of the mathematical operations required to obtain the result. This list is then translated in to python expressions and made executable. The list is also used to perform automatic differentiation.
