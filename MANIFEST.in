@@ -1,0 +1,3 @@
+include README.* setup.py setup.cfg
+global-exclude *.pyc
+global-exclude *.pyo
