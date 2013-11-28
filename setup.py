@@ -1,12 +1,12 @@
 import os
 from setuptools import setup
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+with open('README.md') as file:
+    long_description = file.read()
 
 setup(
     name = "ADPY",
-    version = "0.11 alpha",
+    version = "0.12 alpha",
     author = "Oliver Schnabel",
     author_email = "zwenson@rocketmail.com",
     description = ("ADPY is a Python library for algorithmic differentiation"),
@@ -14,7 +14,7 @@ setup(
     keywords = "python algorithmic differentiation scientific numpy",
     url = "https://github.com/zwenson/ADPY",
     packages=['ADPY','ADPY.ADFUN','ADPY.SOLVER'],
-    long_description=read('README.md'),
+    long_description=long_description,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 2.7",
